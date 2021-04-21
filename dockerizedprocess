@@ -1,0 +1,58 @@
+Line 1: Use another Docker image for the template of my image.
+ We shall use the official Node.js image with Node v7.
+
+You can share images using image registries. In this example we'll use Docker Hub, 
+the most popular one.
+
+FROM node:7
+
+Line 2: Set working dir in the container to /app. 
+We shall use this directory to store files, run npm, and launch our application:
+
+WORKDIR /app
+
+Line 3-5: Copy application to /app directory and install dependencies. 
+If you add the package.json first and run npm install later, 
+Docker won't have to install the dependencies again if you change the package.json file. 
+This results from the way the Docker image is being built (layers and cache), 
+and this is what we should do:
+
+COPY package.json /app
+RUN npm install
+COPY . /app
+
+Line 6: This line describes what should be executed when the Docker image is launching. 
+What we want to do is to run our application:
+
+CMD node index.js
+
+Line 7: Expose port 8081 to the outside once the container has launched:
+
+EXPOSE 8081
+
+
+Build Docker image
+
+docker build -t hello-world .
+
+
+Run Docker container
+
+Execute the following string to launch the container and publish it on the host with the same port 8081:
+docker run -p 8081:8081 hello-world
+
+Sharing Docker image
+
+Sign up at hub.docker.com
+
+Build the image again using your Docker Hub credentials:
+
+ $ docker build -t [USERNAME]/hello-world .
+
+Log in to Docker Hub with your credentials:
+
+ $ docker login
+
+Push the image to Docker Hub:
+
+ $ docker push [USERNAME]/hello-world

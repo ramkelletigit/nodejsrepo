@@ -1,0 +1,50 @@
+mkdir helloworld
+cd helloworld
+npm init
+Command 'npm' not found, but can be installed with:
+sudo apt install npm
+npm init
+
+Press ^C at any time to quit.
+package name: (helloworld)
+version: (1.0.0)
+description:
+entry point: (index.js)
+test command: 
+git repository:
+keywords:
+author:
+license: (ISC)
+About to write to /mnt/h/MINDTEC- INFO - 2021/PYTHON-DOCKER-DJANGO/NodeJs/helloworld/package.json:
+
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
+
+Is this OK? (yes)
+its create the package.json file
+
+npm install express --save
+
+its create the package-lock.json and node_moduls
+
+create the index.js
+touch index.js
+
+Run the app
+node index.js
+
+app listening on port 8081!
+Go to http://localhost:8081/ in your browser to view it.
+
+
+
